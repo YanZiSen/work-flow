@@ -8,7 +8,9 @@ console.log('dist', path.join(__dirname, '/dist'))
 
 module.exports = {
   entry: {
-    index: path.join(__dirname, '/src/index/index.js')
+    index: path.join(__dirname, '/src/index/index.js'),
+    shape: path.join(__dirname, '/src/shape/index.js'),
+    event: path.join(__dirname, '/src/event/index.js')
   },
   output: {
     path: path.join(__dirname, '/dist'),
@@ -22,6 +24,20 @@ module.exports = {
           loader: 'babel-loader',
           options: {}
         }]
+      },
+      {
+        test: /\.styl/,
+        use: [
+          {
+            loader: 'style-loader'
+          },
+          {
+            loader: 'css-loader'
+          },
+          {
+            loader: 'stylus-loader'
+          }
+        ]
       }
     ]
   },
@@ -30,6 +46,16 @@ module.exports = {
       template: path.join(__dirname, '/src/index/index.html'),
       inject: true,
       chunks: ['index']
+    }),
+    new HtmlWebpackPlugin({
+      template: path.join(__dirname, '/src/shape/index.html'),
+      inject: true,
+      chunks: ['shape']
+    }),
+    new HtmlWebpackPlugin({
+      template: path.join(__dirname, '/src/event/index.html'),
+      inject: true,
+      chunks: ['event']
     })
   ],
   devServer: {
