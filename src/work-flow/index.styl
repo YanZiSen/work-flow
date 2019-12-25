@@ -1,0 +1,43 @@
+*
+  margin 0
+  padding 0
+  box-sizing border-box
+html,body, #app{
+  height 100%
+  width 100%
+}
+.left
+  float left
+.right
+  float right
+.clearfix
+  &:before
+    content ''
+    display table
+  &:after
+    content ''
+    clear both
+    display block
+
+.textOverflow
+  text-overflow ellipsis
+  overflow hidden
+  white-space nowrap
+/*************************************************************************/
+#app
+  @extends .clearfix
+.left-bar
+  float left
+  height 100%
+  border-right 1px solid #000
+  width 120px
+.drawer
+  height 100%
+  float left
+  width 'calc(100% - %s)' % 120px
+.move
+  cursor pointer
+
+svg, rect, circle, path
+  fill #fff
+  stroke #666

@@ -10,7 +10,8 @@ module.exports = {
   entry: {
     index: path.join(__dirname, '/src/index/index.js'),
     shape: path.join(__dirname, '/src/shape/index.js'),
-    event: path.join(__dirname, '/src/event/index.js')
+    event: path.join(__dirname, '/src/event/index.js'),
+    workflow: path.join(__dirname, '/src/work-flow/index.js')
   },
   output: {
     path: path.join(__dirname, '/dist'),
@@ -56,7 +57,12 @@ module.exports = {
       template: path.join(__dirname, '/src/event/index.html'),
       inject: true,
       chunks: ['event']
-    })
+    }),
+    new HtmlWebpackPlugin({
+      template: path.join(__dirname, '/src/work-flow/index.html'),
+      inject: true,
+      chunks: ['workflow']
+    }),
   ],
   devServer: {
     contentBase: './dist',
