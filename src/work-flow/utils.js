@@ -14,7 +14,11 @@ function intersection (arr1, arr2) {
     throw new Error('输入正确的参数')
   }
 }
+function deepCopy (obj) {
+  return JSON.parse(JSON.stringify(obj))
+}
 export default {
   generateUUID,
-  intersection
+  intersection,
+  deepCopy
 }

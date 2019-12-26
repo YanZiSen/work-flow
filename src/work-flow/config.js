@@ -48,6 +48,12 @@ export let positionConfig = {
     moveDir: 1
   }
 }
+export let positionKd = {
+  left: -1,
+  right: 1,
+  top: -1,
+  bottom: 1
+}
 
 export default {
   positionConfig
