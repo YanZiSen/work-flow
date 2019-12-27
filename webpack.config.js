@@ -11,6 +11,7 @@ module.exports = {
     index: path.join(__dirname, '/src/index/index.js'),
     shape: path.join(__dirname, '/src/shape/index.js'),
     event: path.join(__dirname, '/src/event/index.js'),
+    scale: path.join(__dirname, '/src/scale/index.js'),
     workflow: path.join(__dirname, '/src/work-flow/index.js')
   },
   output: {
@@ -46,23 +47,33 @@ module.exports = {
     new HtmlWebpackPlugin({
       template: path.join(__dirname, '/src/index/index.html'),
       inject: true,
-      chunks: ['index']
+      chunks: ['index'],
+      filename: 'index.html'
     }),
     new HtmlWebpackPlugin({
       template: path.join(__dirname, '/src/shape/index.html'),
       inject: true,
-      chunks: ['shape']
+      chunks: ['shape'],
+      filename: 'shape.html'
     }),
     new HtmlWebpackPlugin({
       template: path.join(__dirname, '/src/event/index.html'),
       inject: true,
-      chunks: ['event']
+      chunks: ['event'],
+      filename: 'event.html'
     }),
     new HtmlWebpackPlugin({
       template: path.join(__dirname, '/src/work-flow/index.html'),
       inject: true,
-      chunks: ['workflow']
+      chunks: ['workflow'],
+      filename: 'workflow.html'
     }),
+    new HtmlWebpackPlugin({
+      template: path.join(__dirname, '/src/scale/index.html'),
+      inject: true,
+      chunks: ['scale'],
+      filename: 'scale.html'
+    })
   ],
   devServer: {
     contentBase: './dist',
