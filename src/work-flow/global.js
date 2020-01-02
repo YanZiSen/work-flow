@@ -92,9 +92,14 @@ function getDrawer () {
             shape: target.attr('shape')
           })
         } else if (target.attr('shape') === 'line') {
+<<<<<<< HEAD
           let targetUuid = target.node().parentNode.getAttribute('uuid')
           generate.generateLineHandler({
             data: findDataByid(targetUuid),
+=======
+          generate.generateLineHandler({
+            data: findDataByid(target.attr('uuid')),
+>>>>>>> 2cd597f1186e6e89a3f70245f9405e7fc997f21d
             shape: target.attr('shape')
           })
         } else {
@@ -133,7 +138,11 @@ function initLinkData (sourceId, type) {
 function getGlobalData () {
   return globalData
 }
+<<<<<<< HEAD
 window.getGlobalData = getGlobalData
+=======
+
+>>>>>>> 2cd597f1186e6e89a3f70245f9405e7fc997f21d
 function getLinkData () {
   return tempLink
 }

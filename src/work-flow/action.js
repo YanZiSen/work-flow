@@ -25,11 +25,19 @@ function catchPoint (data) {
           if (Math.sqrt(
               Math.pow(connectDots[key].x - data.x, 2) +
               Math.pow(connectDots[key].y - data.y, 2)
+<<<<<<< HEAD
           ) < 20){
             point = {
               owner: dataObj,
               targetType: key,
               end: utils.deepCopy(connectDots[key])
+=======
+          ) < 120){
+            point = {
+              owner: dataObj,
+              targetType: key,
+              end: connectDots[key]
+>>>>>>> 2cd597f1186e6e89a3f70245f9405e7fc997f21d
             }
           }
         }
@@ -58,18 +66,28 @@ let move = function () {
     })
     // console.log('lines', d3.selectAll(`path[parentId = "${uuid}"]`))
     // console.log('linkData', linkData)
+<<<<<<< HEAD
     let linkGroup = d3.selectAll(`g[parentId = "${uuid}"]`).data(linkData)
     linkGroup.selectAll('path').data(d => Array(2).fill(d))
       .attr('d', d => generate.line(d.points))
+=======
+    d3.selectAll(`path[parentId = "${uuid}"]`).data(linkData)
+    .attr('d', d => generate.line(d.points))
+>>>>>>> 2cd597f1186e6e89a3f70245f9405e7fc997f21d
 
     let lindDataT = globalData.line.filter(line => line.target === uuid).map(line => {
       line.end = data.connectDots[line.targetType]
       line.points = generate.interpolationDots(line.start, line.end)
       return line
     })
+<<<<<<< HEAD
 
     let linkGroupT = d3.selectAll(`g[targetId = "${uuid}"]`).data(lindDataT)
     linkGroupT.selectAll('path').data(d => Array(2).fill(d))
+=======
+    console.log('lineDataT', lindDataT)
+    d3.selectAll(`path[targetId = "${uuid}"]`).data(lindDataT)
+>>>>>>> 2cd597f1186e6e89a3f70245f9405e7fc997f21d
     .attr('d', d => generate.line(d.points))
   }
 }
@@ -107,8 +125,12 @@ let resize = function () {
     })
     // console.log('lines', d3.selectAll(`path[parentId = "${uuid}"]`))
     // console.log('linkData', linkData)
+<<<<<<< HEAD
     let linkGroup = d3.selectAll(`g[parentId = "${uuid}"]`).data(linkData)
     linkGroup.selectAll('path').data(d => Array(2).fill(d))
+=======
+    d3.selectAll(`path[parentId = "${uuid}"]`).data(linkData)
+>>>>>>> 2cd597f1186e6e89a3f70245f9405e7fc997f21d
     .attr('d', d => generate.line(d.points))
 
     let lindDataT = globalData.line.filter(line => line.target === uuid).map(line => {
@@ -116,9 +138,14 @@ let resize = function () {
       line.points = generate.interpolationDots(line.start, line.end)
       return line
     })
+<<<<<<< HEAD
 
     let linkGroupT = d3.selectAll(`g[targetId = "${uuid}"]`).data(lindDataT)
     linkGroupT.selectAll('path').data(d => Array(2).fill(d))
+=======
+    console.log('lineDataT', lindDataT)
+    d3.selectAll(`path[targetId = "${uuid}"]`).data(lindDataT)
+>>>>>>> 2cd597f1186e6e89a3f70245f9405e7fc997f21d
     .attr('d', d => generate.line(d.points))
   }
 }
@@ -153,6 +180,7 @@ let lineDrawer = function () {
 
   linkData.points = generate.interpolationDots(linkData.start, linkData.end)
 
+<<<<<<< HEAD
   let lineGroup = global.getDrawer().select(`g[uuid = "${linkData.uuid}"]`).attr('targetId', linkData.target)
   if (!lineGroup.node()) {
     lineGroup = global.getDrawer().append('g')
@@ -178,6 +206,29 @@ let lineDrawer = function () {
     .attr('stroke-width', (d, i) => {
       return i ? 1 : 9
     })
+=======
+  let lineGroup = global.getDrawer().select(`g[uuid = "${linkData.uuid}"]`)
+  if (!lineGroup.node()) {
+    lineGroup = global.getDrawer().append('g')
+      .attr('uuid', linkData.uuid)
+  }
+
+  let lines = global.getDrawer().selectAll(`g[uuid = "${linkData.uuid}"]`).data([linkData.points])
+  lines.enter()
+    .append('path')
+    .attr('shape', 'line')
+    .attr('parentId', linkData.source)
+    .attr('uuid', linkData.uuid)
+    .attr('d', d => generate.line(d))
+    .attr('marker-end', 'url(#arrow)')
+    .on('click', () => {
+      console.log('line-click')
+    })
+    .merge(lines)
+    .attr('targetId', linkData.target)
+    .attr('d', d => generate.line(d))
+    .attr('marker-end', 'url(#arrow)')
+>>>>>>> 2cd597f1186e6e89a3f70245f9405e7fc997f21d
 }
 let lineDrawerEnd = function () {
   global.addLink()
@@ -185,6 +236,7 @@ let lineDrawerEnd = function () {
 let lineDrawerHandler = d3.drag().on('start', lineDrawerStart)
   .on('drag', lineDrawer)
   .on('end', lineDrawerEnd)
+<<<<<<< HEAD
 let lineModifyStart = function () {
   let linkGroupId = this.parentNode.getAttribute('uuid')
   // find data
@@ -270,4 +322,9 @@ let lineModifyHandler = d3.drag().on('start', lineModifyStart).on('drag', lineMo
 
 export default {
   drag, resizer, lineDrawerHandler, lineModifyHandler
+=======
+
+export default {
+  drag, resizer, lineDrawerHandler
+>>>>>>> 2cd597f1186e6e89a3f70245f9405e7fc997f21d
 }

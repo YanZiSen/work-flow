@@ -117,6 +117,7 @@ function generateHandler ({data, shape} = {}) {
 
 function generateLineHandler ({data, shape}) {
   console.log('data', data, 'shape', shape)
+<<<<<<< HEAD
   d3.select(`g[uuid = "${data.uuid}"]`).selectAll('circle')
     .data(data.points)
     .enter()
@@ -130,6 +131,8 @@ function generateLineHandler ({data, shape}) {
     })
     .style('fill', 'yellow')
     .call(action.lineModifyHandler)
+=======
+>>>>>>> 2cd597f1186e6e89a3f70245f9405e7fc997f21d
 }
 
 function removeHandler () {
